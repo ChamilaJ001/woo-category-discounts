@@ -148,60 +148,60 @@ class Categories_And_Brands_Discount_Rules_Admin
 
 		$rules = get_option('fcl_cdr_discount_rules', array());
 		?>
-																																								<div class="wrap">
-																																									<h1><?php esc_html_e('Custom Discount Settings', 'custom-discount-plugin'); ?></h1>
-																																									<a href="?page=custom-discount&action=add" class="button button-primary"><?php esc_html_e('Add New Discounts', 'custom-discount-plugin'); ?></a>
-																																									<h2><?php esc_html_e('Existing Discounts', 'custom-discount-plugin'); ?></h2>
-																																									<table class="widefat fixed" cellspacing="0">
-																																										<thead>
-																																											<tr>
-																																											<th><?php _e('Discount Name', 'custom-discount-plugin'); ?></th>
-																																												<th><?php _e('Cart Total', 'custom-discount-plugin'); ?></th>
-																																												<th><?php _e('Product Category', 'custom-discount-plugin'); ?></th>
-																																												<th><?php _e('Product Brand', 'custom-discount-plugin'); ?></th>
-																																												<th><?php _e('Discount Type', 'custom-discount-plugin'); ?></th>
-																																												<th><?php _e('Discount Amount', 'custom-discount-plugin'); ?></th>
-																																												<th><?php _e('Actions', 'custom-discount-plugin'); ?></th>
-																																											</tr>
-																																										</thead>
-																																										<tbody>
-																																											<?php if (!empty($rules)): ?>
-																																																															<?php foreach ($rules as $index => $rule): ?>
-																																																																																			<tr>
-																																																																																			<td><?php echo esc_html($rule['discount_name']); ?></td>
-																																																																																				<td><?php echo esc_html($rule['cart_total']); ?></td>
-																																																																																				<td><?php echo esc_html($rule['category']); ?></td>
-																																																																																				<td><?php echo esc_html($rule['brand']); ?></td>
-																																																																																				<td><?php echo esc_html($rule['discount_type']); ?></td>
-																																																																																				<td><?php echo esc_html($rule['discount_amount']); ?></td>
-																																																																																				<td>
-																																																																																					<form method="post" action="" style="display:inline;">
-																																																																																						<?php wp_nonce_field('fcl_cdr_delete_rule_nonce', 'fcl_cdr_delete_nonce_field'); ?>
-																																																																																						<input type="hidden" name="rule_index" value="<?php echo esc_attr($index); ?>" />
-																																																																																						<?php submit_button(__('Delete', 'custom-discount-plugin'), 'delete', 'fcl_cdr_delete_rule', false); ?>
-																																																																																					</form>
-																																																																																					<a href="?page=custom-discount&action=edit&rule_index=<?php echo esc_attr($index); ?>" class="button"><?php _e('Edit', 'custom-discount-plugin'); ?></a>
-																																																																																					<form method="post" action="" style="display:inline;">
-																																																																																						<?php wp_nonce_field('fcl_cdr_toggle_rule_nonce', 'fcl_cdr_toggle_nonce_field'); ?>
-																																																																																						<input type="hidden" name="rule_index" value="<?php echo esc_attr($index); ?>" />
-																																																																																						<?php
-																																																																																						$button_text = isset($rule['disabled']) && $rule['disabled'] ? __('Enable', 'custom-discount-plugin') : __('Disable', 'custom-discount-plugin');
-																																																																																						$button_class = isset($rule['disabled']) && $rule['disabled'] ? 'secondary' : 'primary';
-																																																																																						submit_button($button_text, $button_class, 'fcl_cdr_toggle_rule', false);
-																																																																																						?>
-																																																																																					</form>
-																																																																																				</td>
-																																																																																			</tr>
-																																																															<?php endforeach; ?>
-																																											<?php else: ?>
-																																																															<tr>
-																																																																<td colspan="5"><?php _e('No discount rules found.', 'custom-discount-plugin'); ?></td>
-																																																															</tr>
-																																											<?php endif; ?>
-																																										</tbody>
-																																									</table>
-																																								</div>
-																																								<?php
+																																														<div class="wrap">
+																																															<h1><?php esc_html_e('Custom Discount Settings', 'custom-discount-plugin'); ?></h1>
+																																															<a href="?page=custom-discount&action=add" class="button button-primary"><?php esc_html_e('Add New Discounts', 'custom-discount-plugin'); ?></a>
+																																															<h2><?php esc_html_e('Existing Discounts', 'custom-discount-plugin'); ?></h2>
+																																															<table class="widefat fixed" cellspacing="0">
+																																																<thead>
+																																																	<tr>
+																																																	<th><?php _e('Discount Name', 'custom-discount-plugin'); ?></th>
+																																																		<th><?php _e('Cart Total', 'custom-discount-plugin'); ?></th>
+																																																		<th><?php _e('Category', 'custom-discount-plugin'); ?></th>
+																																																		<th><?php _e('Brand', 'custom-discount-plugin'); ?></th>
+																																																		<th><?php _e('Type', 'custom-discount-plugin'); ?></th>
+																																																		<th><?php _e('Discount Amount', 'custom-discount-plugin'); ?></th>
+																																																		<th><?php _e('Actions', 'custom-discount-plugin'); ?></th>
+																																																	</tr>
+																																																</thead>
+																																																<tbody>
+																																																	<?php if (!empty($rules)): ?>
+																																																																								<?php foreach ($rules as $index => $rule): ?>
+																																																																																															<tr>
+																																																																																															<td><?php echo esc_html($rule['discount_name']); ?></td>
+																																																																																																<td><?php echo esc_html($rule['cart_total']); ?></td>
+																																																																																																<td><?php echo esc_html($rule['category']); ?></td>
+																																																																																																<td><?php echo esc_html($rule['brand']); ?></td>
+																																																																																																<td><?php echo esc_html($rule['discount_type']); ?></td>
+																																																																																																<td><?php echo esc_html($rule['discount_amount']); ?></td>
+																																																																																																<td>
+																																																																																																	<form method="post" action="" style="display:inline;">
+																																																																																																		<?php wp_nonce_field('fcl_cdr_delete_rule_nonce', 'fcl_cdr_delete_nonce_field'); ?>
+																																																																																																		<input type="hidden" name="rule_index" value="<?php echo esc_attr($index); ?>" />
+																																																																																																		<?php submit_button(__('Delete', 'custom-discount-plugin'), 'delete', 'fcl_cdr_delete_rule', false); ?>
+																																																																																																	</form>
+																																																																																																	<a href="?page=custom-discount&action=edit&rule_index=<?php echo esc_attr($index); ?>" class="button"><?php _e('Edit', 'custom-discount-plugin'); ?></a>
+																																																																																																	<form method="post" action="" style="display:inline;">
+																																																																																																		<?php wp_nonce_field('fcl_cdr_toggle_rule_nonce', 'fcl_cdr_toggle_nonce_field'); ?>
+																																																																																																		<input type="hidden" name="rule_index" value="<?php echo esc_attr($index); ?>" />
+																																																																																																		<?php
+																																																																																																		$button_text = isset($rule['disabled']) && $rule['disabled'] ? __('Enable', 'custom-discount-plugin') : __('Disable', 'custom-discount-plugin');
+																																																																																																		$button_class = isset($rule['disabled']) && $rule['disabled'] ? 'secondary' : 'primary';
+																																																																																																		submit_button($button_text, $button_class, 'fcl_cdr_toggle_rule', false);
+																																																																																																		?>
+																																																																																																	</form>
+																																																																																																</td>
+																																																																																															</tr>
+																																																																								<?php endforeach; ?>
+																																																	<?php else: ?>
+																																																																								<tr>
+																																																																									<td colspan="5"><?php _e('No discount rules found.', 'custom-discount-plugin'); ?></td>
+																																																																								</tr>
+																																																	<?php endif; ?>
+																																																</tbody>
+																																															</table>
+																																														</div>
+																																														<?php
 	}
 
 	// Add discount page
@@ -214,45 +214,45 @@ class Categories_And_Brands_Discount_Rules_Admin
 		}
 
 		?>
-																																								<div class="wrap">
-																																									<h1><?php esc_html_e('Add New Discount', 'custom-discount-plugin'); ?></h1>
-																																									<form method="post" action="">
-																																										<?php wp_nonce_field('fcl_cdr_save_rule_nonce', 'fcl_cdr_nonce_field'); ?>
-																																										<table class="form-table">
-																																										<tr>
-																																												<th scope="row"><label for="fcl_cdr_discount_name"><?php esc_html_e('Discount Name', 'custom-discount-plugin'); ?></label></th>
-																																												<td><input type="text" name="fcl_cdr_discount_name" id="fcl_cdr_discount_name" value="" required></td>
-																																											</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_cart_total"><?php esc_html_e('Cart Total', 'custom-discount-plugin'); ?></label></th>
-																																												<td><input type="number" name="fcl_cdr_cart_total" id="fcl_cdr_cart_total" value="" required></td>
-																																											</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_category"><?php esc_html_e('Product Category', 'custom-discount-plugin'); ?></label></th>
-																																												<td><?php $this->fcl_cdr_category_select(); ?></td>
-																																											</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_brand"><?php esc_html_e('Product Brand', 'custom-discount-plugin'); ?></label></th>
-																																												<td><?php $this->fcl_cdr_brand_select(); ?></td>
-																																											</tr>
-																																											<tr valign="top">
-																																	<th scope="row"><?php esc_html_e('Discount Type', 'custom-discount-plugin'); ?></th>
-																																	<td>
-																																		<select name="fcl_cdr_discount_type" required>
-																																			<option value="fixed"><?php esc_html_e('Fixed Rate', 'custom-discount-plugin'); ?></option>
-																																			<option value="percentage"><?php esc_html_e('Percentage', 'custom-discount-plugin'); ?></option>
-																																		</select>
-																																	</td>
-																																</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_discount_amount"><?php esc_html_e('Discount Amount', 'custom-discount-plugin'); ?></label></th>
-																																												<td><input type="number" name="fcl_cdr_discount_amount" id="fcl_cdr_discount_amount" value="" required></td>
-																																											</tr>
-																																										</table>
-																																										<?php submit_button(__('Add Discount Rule', 'custom-discount-plugin'), 'primary', 'fcl_cdr_add_rule'); ?>
-																																									</form>
-																																								</div>
-																																								<?php
+																																														<div class="wrap">
+																																															<h1><?php esc_html_e('Add New Discount', 'custom-discount-plugin'); ?></h1>
+																																															<form method="post" action="">
+																																																<?php wp_nonce_field('fcl_cdr_save_rule_nonce', 'fcl_cdr_nonce_field'); ?>
+																																																<table class="form-table">
+																																																<tr>
+																																																		<th scope="row"><label for="fcl_cdr_discount_name"><?php esc_html_e('Discount Name', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><input type="text" name="fcl_cdr_discount_name" id="fcl_cdr_discount_name" value="" required></td>
+																																																	</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_cart_total"><?php esc_html_e('Cart Total', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><input type="number" name="fcl_cdr_cart_total" id="fcl_cdr_cart_total" value="" required></td>
+																																																	</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_category"><?php esc_html_e('Product Category', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><?php $this->fcl_cdr_category_select(); ?></td>
+																																																	</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_brand"><?php esc_html_e('Product Brand', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><?php $this->fcl_cdr_brand_select(); ?></td>
+																																																	</tr>
+																																																	<tr valign="top">
+																																							<th scope="row"><?php esc_html_e('Discount Type', 'custom-discount-plugin'); ?></th>
+																																							<td>
+																																								<select name="fcl_cdr_discount_type" required>
+																																									<option value="fixed"><?php esc_html_e('Fixed Rate', 'custom-discount-plugin'); ?></option>
+																																									<option value="percentage"><?php esc_html_e('Percentage', 'custom-discount-plugin'); ?></option>
+																																								</select>
+																																							</td>
+																																						</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_discount_amount"><?php esc_html_e('Discount Amount', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><input type="number" name="fcl_cdr_discount_amount" id="fcl_cdr_discount_amount" value="" required></td>
+																																																	</tr>
+																																																</table>
+																																																<?php submit_button(__('Add Discount Rule', 'custom-discount-plugin'), 'primary', 'fcl_cdr_add_rule'); ?>
+																																															</form>
+																																														</div>
+																																														<?php
 	}
 
 	// Edit rule page
@@ -274,46 +274,46 @@ class Categories_And_Brands_Discount_Rules_Admin
 		$rule = $rules[$rule_index];
 
 		?>
-																																								<div class="wrap">
-																																									<h1><?php esc_html_e('Edit Discount', 'custom-discount-plugin'); ?></h1>
-																																									<form method="post" action="">
-																																										<?php wp_nonce_field('fcl_cdr_save_rule_nonce', 'fcl_cdr_nonce_field'); ?>
-																																										<input type="hidden" name="rule_index" value="<?php echo esc_attr($rule_index); ?>">
-																																										<table class="form-table">
-																																										<tr>
-																																												<th scope="row"><label for="fcl_cdr_discount_name"><?php esc_html_e('Discount Name', 'custom-discount-plugin'); ?></label></th>
-																																												<td><input type="text" name="fcl_cdr_discount_name" id="fcl_cdr_discount_name" value="<?php echo esc_attr($rule['discount_name']); ?>" required></td>
-																																											</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_cart_total"><?php esc_html_e('Cart Total', 'custom-discount-plugin'); ?></label></th>
-																																												<td><input type="number" name="fcl_cdr_cart_total" id="fcl_cdr_cart_total" value="<?php echo esc_attr($rule['cart_total']); ?>" required></td>
-																																											</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_category"><?php esc_html_e('Product Category', 'custom-discount-plugin'); ?></label></th>
-																																												<td><?php $this->fcl_cdr_category_select($rule['category']); ?></td>
-																																											</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_brand"><?php esc_html_e('Product Brand', 'custom-discount-plugin'); ?></label></th>
-																																												<td><?php $this->fcl_cdr_brand_select($rule['brand']); ?></td>
-																																											</tr>
-																																											<tr valign="top">
-																											<th scope="row"><?php esc_html_e('Discount Type', 'custom-discount-plugin'); ?></th>
-																											<td>
-																												<select name="fcl_cdr_discount_type" required>
-																													<option value="fixed" <?php selected($rule['discount_type'], 'fixed'); ?>><?php esc_html_e('Fixed Rate', 'custom-discount-plugin'); ?></option>
-																													<option value="percentage" <?php selected($rule['discount_type'], 'percentage'); ?>><?php esc_html_e('Percentage', 'custom-discount-plugin'); ?></option>
-																												</select>
-																											</td>
-																										</tr>
-																																											<tr>
-																																												<th scope="row"><label for="fcl_cdr_discount_amount"><?php esc_html_e('Discount Amount', 'custom-discount-plugin'); ?></label></th>
-																																												<td><input type="number" name="fcl_cdr_discount_amount" id="fcl_cdr_discount_amount" value="<?php echo esc_attr($rule['discount_amount']); ?>" required></td>
-																																											</tr>
-																																										</table>
-																																										<?php submit_button(__('Save Changes', 'custom-discount-plugin'), 'primary', 'fcl_cdr_save_rule'); ?>
-																																									</form>
-																																								</div>
-																																								<?php
+																																														<div class="wrap">
+																																															<h1><?php esc_html_e('Edit Discount', 'custom-discount-plugin'); ?></h1>
+																																															<form method="post" action="">
+																																																<?php wp_nonce_field('fcl_cdr_save_rule_nonce', 'fcl_cdr_nonce_field'); ?>
+																																																<input type="hidden" name="rule_index" value="<?php echo esc_attr($rule_index); ?>">
+																																																<table class="form-table">
+																																																<tr>
+																																																		<th scope="row"><label for="fcl_cdr_discount_name"><?php esc_html_e('Discount Name', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><input type="text" name="fcl_cdr_discount_name" id="fcl_cdr_discount_name" value="<?php echo esc_attr($rule['discount_name']); ?>" required></td>
+																																																	</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_cart_total"><?php esc_html_e('Cart Total', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><input type="number" name="fcl_cdr_cart_total" id="fcl_cdr_cart_total" value="<?php echo esc_attr($rule['cart_total']); ?>" required></td>
+																																																	</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_category"><?php esc_html_e('Product Category', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><?php $this->fcl_cdr_category_select($rule['category']); ?></td>
+																																																	</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_brand"><?php esc_html_e('Product Brand', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><?php $this->fcl_cdr_brand_select($rule['brand']); ?></td>
+																																																	</tr>
+																																																	<tr valign="top">
+																																	<th scope="row"><?php esc_html_e('Discount Type', 'custom-discount-plugin'); ?></th>
+																																	<td>
+																																		<select name="fcl_cdr_discount_type" required>
+																																			<option value="fixed" <?php selected($rule['discount_type'], 'fixed'); ?>><?php esc_html_e('Fixed Rate', 'custom-discount-plugin'); ?></option>
+																																			<option value="percentage" <?php selected($rule['discount_type'], 'percentage'); ?>><?php esc_html_e('Percentage', 'custom-discount-plugin'); ?></option>
+																																		</select>
+																																	</td>
+																																</tr>
+																																																	<tr>
+																																																		<th scope="row"><label for="fcl_cdr_discount_amount"><?php esc_html_e('Discount Amount', 'custom-discount-plugin'); ?></label></th>
+																																																		<td><input type="number" name="fcl_cdr_discount_amount" id="fcl_cdr_discount_amount" value="<?php echo esc_attr($rule['discount_amount']); ?>" required></td>
+																																																	</tr>
+																																																</table>
+																																																<?php submit_button(__('Save Changes', 'custom-discount-plugin'), 'primary', 'fcl_cdr_save_rule'); ?>
+																																															</form>
+																																														</div>
+																																														<?php
 	}
 
 	private function fcl_cdr_save_rule()

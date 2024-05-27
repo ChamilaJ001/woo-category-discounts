@@ -123,6 +123,7 @@ class Categories_And_Brands_Discount_Rules_Public
 
 		$applicable_discount = 0;
 		$discount_name = '';
+		$brand_name = '';
 
 		foreach ($enabled_rules as $rule) {
 			if ($cart_total >= $rule['cart_total'] && $applicable_discount === 0) {
@@ -131,10 +132,12 @@ class Categories_And_Brands_Discount_Rules_Public
 					if ($rule['discount_type'] === 'fixed') {
 						$applicable_discount = max($applicable_discount, $rule['discount_amount']);
 						$discount_name = $rule['discount_name'];
+						$brand_name = $rule['brand'];
 					} elseif ($rule['discount_type'] === 'percentage') {
 						$percentage_discount = ($cart_total * $rule['discount_amount']) / 100;
 						$applicable_discount = max($applicable_discount, $percentage_discount);
 						$discount_name = $rule['discount_name'];
+						$brand_name = $rule['brand'];
 					}
 				}
 			}
@@ -143,6 +146,7 @@ class Categories_And_Brands_Discount_Rules_Public
 		// Apply the discount if applicable
 		if ($applicable_discount > 0) {
 			WC()->cart->add_fee(__($discount_name, 'custom-discount-plugin'), -$applicable_discount);
+			wc_add_notice(__('Congratulations! You have received a discount of ' . wc_price($applicable_discount) . ' for ' . $brand_name . ' brand products.', 'custom-discount-plugin'), 'success');
 		}
 	}
 
